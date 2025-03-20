@@ -15,3 +15,4 @@ via_ir = true
 
 [etherscan]
 bsc-testnet = { key = "5D7WU9RKFU6BNK6UH117JM6X6BVU36H76C" }
+bsc = { key = "5D7WU9RKFU6BNK6UH117JM6X6BVU36H76C" }
