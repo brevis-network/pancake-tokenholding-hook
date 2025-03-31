@@ -21,8 +21,8 @@ contract Deploy is Script {
 
         vm.startBroadcast();
 
-        BrevisFee feev = new BrevisFee();
-        console.log("BrevisFee contract deployed at ", address(feev));
+        //BrevisFee feev = new BrevisFee();
+        //console.log("BrevisFee contract deployed at ", address(feev));
 
         BinVipHook binHook = new BinVipHook(IBinPoolManager(binpm), 0, brevReq);
         console.log("binHook contract deployed at ", address(binHook));

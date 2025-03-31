@@ -27,7 +27,7 @@ abstract contract VipDiscountMap {
                 break;
             }
 
-            uint16 disc = uint16(bytes2(raw[idx+20:22]));
+            uint16 disc = uint16(bytes2(raw[idx+20:idx+22]));
             require(disc <= MAX_DISCOUNT, "discount greater than 100%");
 
             feeDiscount[usr] = disc;
