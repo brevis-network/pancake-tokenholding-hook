@@ -11,16 +11,21 @@ abstract contract VipDiscountMap {
 
     // default fee. 10% is 100_000; max is 100% 1_000_000
     uint24 public origFee;
+    uint32 public epoch;
 
     // could be public if there is need
     mapping(address => uint16) feeDiscount;
 
-    // decode and set multiple users, data is packed as address|discount
+    // decode and set multiple users, data is packed as epoch| [address|discount]
     function updateBatch(bytes calldata raw) internal {
         require(raw.length > 0, "empty data");
-        require(raw.length % 22 == 0, "incorrect data length");
-
-        for (uint256 idx=0; idx<raw.length; idx+=22) {
+        require((raw.length-4) % 22 == 0, "incorrect data length");
+        uint32 epo = uint32(bytes4(raw[0:4]));
+        require(epo >= epoch, "old epoch");
+        if (epo > epoch) {
+            epoch = epo;
+        }
+        for (uint256 idx=4; idx<raw.length; idx+=22) {
             address usr = address(bytes20(raw[idx:idx+20]));
             // due to fixed circuit output, we may have 0 addr for padding. break to save gas
             if (usr == address(0)) {
