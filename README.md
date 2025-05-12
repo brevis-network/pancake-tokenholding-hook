@@ -1,4 +1,4 @@
-# Brevis Fee Discount Hook for Pancake Infinity (Token Holding Based)
+# Brevis Fee Discount Hook for PancakeSwap Infinity (Token Holding Based)
 
 This repo implements the hook contract that enables swap fee discounts in a PancakeSwap Infinity (v4) pool for long-term token holders. 
 
