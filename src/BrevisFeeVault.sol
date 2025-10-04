@@ -28,7 +28,7 @@ contract BrevisFee is Ownable {
 
     // collect all fees in list of pools
     function collectAll(address payable receiver, bytes32[] calldata poolIds) external onlyOwner {
-        for (uint256 i=0; i<=poolIds.length; i++) {
+        for (uint256 i=0; i<poolIds.length; i++) {
             if (balance[poolIds[i]] > 0) {
                 uint256 val = balance[poolIds[i]];
                 balance[poolIds[i]] = 0;
